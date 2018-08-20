@@ -66,10 +66,16 @@ class Node():
                 self.mesh.rig(self.json['skin'], self.index)
 
         if 'camera' in self.json.keys():
-            self.camera = Camera(self.json['camera'], self.name, self.gltf.json['cameras'][self.json['camera']], self.gltf)
-            self.camera.read()
-            self.camera.debug_missing()
+            # self.camera = Camera(self.json['camera'], self.name, self.gltf.json['cameras'][self.json['camera']], self.gltf)
+            # self.camera.read()
+            # self.camera.debug_missing()
+            return
 
+        if 'extensions' in self.json.keys() and 'KHR_lights_punctual' in self.json['extensions']:
+            return
+
+        if 'Correction_' in self.json["name"]:
+            return
 
         if not 'children' in self.json.keys():
             return

@@ -155,7 +155,8 @@ class glTFImporter():
         if 'extensionsRequired' in self.json.keys():
             for ext in self.json['extensionsRequired']:
                 if ext not in self.extensions_managed:
-                    return False, "Extension " + ext + " is not available on this addon version"
+                    self.log.error("Extension " + ext + " is not available on this addon version")
+                    # return False, "Extension " + ext + " is not available on this addon version"
 
         if 'extensionsUsed' in self.json.keys():
             for ext in self.json['extensionsUsed']:
